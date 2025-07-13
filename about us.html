@@ -608,40 +608,39 @@
     });
   </script>
   <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://assets.codepen.io/16327/SplitText3.min.js"></script>
-  <script>
-    gsap.registerPlugin(ScrollTrigger, SplitText);
-    const split = new SplitText("#animatedAbout", { type: "lines" });
-    split.lines.forEach(line => {
-      gsap.to(line, {
-        backgroundPositionX: 0,
-        ease: "none",
-        scrollTrigger: {
-          trigger: line,
-          start: "top 60%",
-          end: "bottom 50%",
-          scrub: 0.4
-        }
-      });
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  const split = new SplitText("#animatedAbout", { type: "lines" });
+  split.lines.forEach(line => {
+    gsap.to(line, {
+      backgroundPositionX: 0,
+      ease: "none",
+      scrollTrigger: {
+        trigger: line,
+        start: "top 60%",
+        end: "bottom 50%",
+        scrub: 0.4
+      }
     });
+  });
 
-    const lenis = new Lenis({
-      smooth: true,
-      lerp: 0.045,
-      direction: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothTouch: true,
-      touchMultiplier: 1.3
-    });
+  const lenis = new Lenis({
+    smooth: true,
+    lerp: 0.045,
+    direction: 'vertical',
+    gestureOrientation: 'vertical',
+    smoothTouch: true,
+    touchMultiplier: 1.3
+  });
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
+  function raf(time) {
+    lenis.raf(time);
     requestAnimationFrame(raf);
-  </script>
+  }
+
+  requestAnimationFrame(raf);
+</script>
 </body>
 </html>
